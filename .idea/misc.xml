@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/drawable-v24/btn_primary.xml" value="0.194" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/drawable/borda.xml" value="0.194" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/drawable/navbar_style.xml" value="0.193" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/activity_autorizacao.xml" value="0.25" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/activity_bairro.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/activity_carrinho.xml" value="0.22" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/activity_config.xml" value="0.1859375" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/activity_pedidos.xml" value="0.22" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/activity_produto.xml" value="0.371875" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/activity_produtos.xml" value="0.33" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/adapter_carrinho.xml" value="0.33" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/adapter_lista.xml" value="0.25" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/adapter_pedidos.xml" value="0.1859375" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/layout/layout_teste.xml" value="0.1" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/menu/menu_cliente.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/menu/menu_clientes.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/menu/menu_teste.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/MICRO/IntelliJIDEAProjects/Application1/app/src/main/res/menu/popup_menu.xml" value="0.21458333333333332" />
+        <entry key="..\:/Users/SPACE/IdeaProjects/AppTeste/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1015" />
+        <entry key="..\:/Users/SPACE/IdeaProjects/AppTeste/app/src/main/res/drawable/borda.xml" value="0.1" />
+        <entry key="..\:/Users/SPACE/IdeaProjects/AppTeste/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1015" />
+        <entry key="..\:/Users/SPACE/IdeaProjects/AppTeste/app/src/main/res/layout/activity_main.xml" value="0.16032608695652173" />
+        <entry key="..\:/Users/SPACE/IdeaProjects/AppTeste/app/src/main/res/layout/layout_teste.xml" value="0.1" />
+        <entry key="..\:/Users/SPACE/IdeaProjects/AppTeste/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1015" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
+</project>

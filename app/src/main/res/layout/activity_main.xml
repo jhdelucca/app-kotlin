@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/navbar_style"
+        android:elevation="5dp">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_icone" />
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="50dp"
+            android:background="@drawable/borda"
+            tools:layout_editor_absoluteY="114dp">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical"
+                      android:layout_margin="30dp"
+                      android:gravity="center">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/logo"
+                    android:id="@+id/imageView"/>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          tools:ignore="MissingConstraints" android:layout_marginTop="20px">
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Usuario"/>
+
+                <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:id="@+id/editTextUsr"
+                        tools:layout_editor_absoluteY="300dp"
+                        tools:layout_editor_absoluteX="89dp"
+                        android:focusable="true"
+                        tools:ignore="LabelFor,MissingConstraints"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          tools:ignore="MissingConstraints">
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Senha"/>
+
+                <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:id="@+id/editTextSenha"
+                        android:inputType="textPassword"
+                        tools:layout_editor_absoluteY="300dp"
+                        tools:layout_editor_absoluteX="89dp"
+                        tools:ignore="LabelFor,MissingConstraints" />
+            </LinearLayout>
+
+            <Spinner android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="50px"
+                     android:gravity="center"
+                     android:id="@+id/spiFilial"/>
+
+            <Button
+                    android:text="Logar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonLoga2"
+                    tools:layout_editor_absoluteY="458dp"
+                    tools:layout_editor_absoluteX="167dp"
+                    tools:ignore="MissingConstraints"
+                    android:background="@drawable/btn_primary"
+                    android:layout_marginTop="30px"
+            />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

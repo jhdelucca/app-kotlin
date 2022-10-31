@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        tools:ignore="MissingConstraints" >
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:weightSum="3">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:layout_weight="0.8">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="Total: " android:textStyle="bold" android:textSize="20dp"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="R$ 0.00 " android:textStyle="bold" android:layout_marginLeft="2dp"
+                      android:textSize="20dp" android:id="@+id/txtTotal"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnAddItens"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp" android:src="@drawable/plus"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnCancelar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                 android:src="@drawable/cancel"
+                android:layout_marginLeft="15dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnSalvar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp" android:src="@drawable/check"/>
+        </LinearLayout>
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/id_listaCarrinho"
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+        tools:listitem="@layout/adapter_carrinho"
+        android:layout_margin="5dp"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints"
+        tools:visibility="visible"
+        tools:viewBindingType="androidx.recyclerview.widget.RecyclerView"
+        app:layout_constraintHorizontal_bias="0.0"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:minWidth="50dp"
+        android:layout_gravity="center"
+        android:id="@+id/progressbar"
+        android:visibility="gone"/>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical" android:id="@+id/layout_dados" android:visibility="visible"
+                    android:layout_marginTop="100dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:weightSum="2"
+                      android:layout_marginTop="10dp">
+
+
+            <Spinner android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1"
+                     android:id="@+id/spinNat" android:layout_margin="10dp" android:tooltipText="Unidade" />
+
+            <Spinner android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_weight="1" android:id="@+id/spinForma"
+                      android:enabled="true" android:layout_margin="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:weightSum="2"
+                      android:layout_marginTop="10dp">
+
+
+            <Spinner android:layout_width="match_parent" android:layout_height="match_parent"
+                      android:layout_weight="1" android:id="@+id/spinCondicao" android:layout_margin="10dp" />
+
+            <Spinner android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_weight="1" android:id="@+id/spinVendedor"
+                      android:layout_margin="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical" android:id="@+id/layout_altera" android:visibility="gone" >
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:weightSum="2"
+                      android:layout_marginTop="10dp">
+
+
+            <Spinner android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1"
+                     android:id="@+id/spinUnidadeCar" android:layout_margin="10dp" android:tooltipText="Unidade" />
+
+            <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_weight="1" android:id="@+id/editEstoquCar" android:hint="Estoque"
+                      android:enabled="false" android:layout_margin="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:weightSum="2"
+                      android:layout_marginTop="10dp">
+
+
+            <EditText android:layout_width="match_parent" android:layout_height="match_parent"
+                      android:layout_weight="1" android:hint="Quantidade"
+                      android:id="@+id/editQuantidadeCar" android:layout_margin="10dp" android:inputType="text"/>
+
+            <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_weight="1" android:id="@+id/editValorCar" android:hint="Valor"
+                      android:layout_margin="10dp" android:inputType="text"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:weightSum="2"
+                      android:layout_marginTop="10dp" >
+
+
+            <androidx.appcompat.widget.AppCompatButton android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:layout_weight="1" android:text="Salvar"
+                                                       android:background="@drawable/btn_primary"
+                                                       android:id="@+id/btSalvarCar" android:layout_margin="10dp"
+                                                       android:textColor="@color/white"/>
+
+            <androidx.appcompat.widget.AppCompatButton android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:layout_weight="1" android:text="Cancelar"
+                                                       android:background="@drawable/btn_primary"
+                                                       android:id="@+id/btCancelCar" android:layout_margin="10dp"
+                                                       android:textColor="@color/white"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

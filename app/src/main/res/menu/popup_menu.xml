@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">    <item
+    android:id="@+id/alterar_pedido"
+    android:title="Alterar Pedido"
+    android:visible="true"/>
+    <item
+    android:id="@+id/cancelar_pedido"
+    android:title="Cancelar Pedido"
+    android:visible="true"/>
+</menu>

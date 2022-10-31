@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/toolBar" >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            tools:ignore="MissingConstraints" >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_icone" />
+
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:layout_gravity="right">
+                    <EditText
+                        android:id="@+id/editTextDate"
+                        android:layout_width="115dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Data Inicial"
+                        android:inputType="date"
+
+                    />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="a"/>
+                    <EditText
+                        android:id="@+id/editTextDate2"
+                        android:layout_width="115dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Data Final"
+                        android:layout_marginRight="10dp"
+                        android:inputType="date"/>
+
+                </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/id_listaPedidos"
+            android:layout_margin="10dp"
+            tools:ignore="MissingConstraints"
+            android:visibility="visible"
+            tools:visibility="visible"/>
+
+    </LinearLayout>
+</LinearLayout>
