@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/report_pedido_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/border_report_pedido">
+
+        <TextView
+            android:id="@+id/recebe_quantidade_produto"
+            android:layout_width="match_parent"
+            android:layout_weight="4"
+            android:layout_height="20dp"
+            android:text="9999"
+            android:gravity="center"
+            android:textStyle="bold" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_weight="1"
+    android:layout_height="20dp"
+    android:background="@drawable/border_report_pedido">
+
+        <TextView
+            android:id="@+id/recebe_descricao_produto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:textSize="12sp"
+            android:layout_marginTop="3dp"
+            android:text="descrçao de produto ddddddddddddddddddddddd"
+            android:textStyle="bold" />
+</LinearLayout>
+
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_weight="4"
+    android:layout_height="20dp"
+    android:layout_gravity="end"
+>
+
+
+        <TextView
+            android:id="@+id/recebe_preco_produto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="valor"
+            android:textStyle="bold" />
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
