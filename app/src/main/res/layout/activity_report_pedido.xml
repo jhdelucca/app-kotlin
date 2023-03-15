@@ -5,8 +5,8 @@
                                               android:layout_width="match_parent"
                                               android:layout_height="match_parent"
                                               android:orientation="vertical"
-                                              tools:context=".ReportPedidoActivity">
-
+                                              tools:context=".activity.ReportPedidoActivity"
+android:id="@+id/layout">
 
     <TextView
             android:layout_width="match_parent"
@@ -17,48 +17,45 @@
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:id="@+id/card_view" >
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:gravity="end"
-            android:orientation="horizontal">
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="Emissão: "/>
-
-        <TextView
-                android:id="@+id/dt_emissao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="28/10/2022"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="  -  "/>
-
-        <TextView
-                android:id="@+id/hora_emissao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="09:26:00"/>
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:orientation="vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pedido: "
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/recebe_numero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 - 154"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -93,14 +90,14 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Endereço: "
+                    android:text="Data Emissao: "
                     android:textSize="12sp"/>
 
             <TextView
-                    android:id="@+id/recebe_endereco"
+                    android:id="@+id/recebe_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="RUA BARAO DO RIO BRANCO                      , 461        - CENTRO"
+                    android:text="23/12/2022"
                     android:textAllCaps="true"
                     android:textSize="12sp"
                     android:textStyle="bold"/>
@@ -120,41 +117,18 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Telefone: "
+                        android:text="Observação: "
                         android:textSize="12sp"/>
 
                 <TextView
-                        android:id="@+id/recebe_telefone"
+                        android:id="@+id/recebe_obs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="(31)99999-9999"
+                        android:text="Teste"
                         android:textSize="12sp"
                         android:textStyle="bold"/>
 
             </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:gravity="end">
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="UF: "
-                        android:textSize="12sp"/>
-
-                <TextView
-                        android:id="@+id/recebe_uf"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MG "
-                        android:textSize="12sp"
-                        android:textStyle="bold"/>
-
-            </LinearLayout>
-
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -212,82 +186,78 @@
         <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                android:background="@drawable/border_report_pedido"
-                    android:layout_marginTop="5dp"
-                    >
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="horizontal"
+                android:background="@drawable/border_report_pedido">
 
                 <TextView
                     android:layout_width="match_parent"
+                    android:layout_weight="4"
                     android:layout_height="20dp"
-                    android:layout_weight="4"
+                    android:text="QTD"
                     android:gravity="center"
-                    android:text="QTD" />
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_weight="1"
-                        android:background="@drawable/border_report_pedido"
-                        android:text="  PRODUTO"/>
+                    android:layout_height="20dp"
+                    android:background="@drawable/border_report_pedido">
 
-                <TextView
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:textSize="12sp"
+                        android:layout_marginTop="3dp"
+                        android:text="PRODUTO"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
                     android:layout_weight="4"
-                        android:gravity="center"
-                        android:text="Vlr.unit"/>
+                    android:layout_height="20dp"
+                    android:layout_gravity="end"
+                >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="end"
+                        android:text="VALOR"
+                        android:textStyle="bold" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
             </LinearLayout>
+
+
+            <ListView
+                android:id="@+id/id_listaItens"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/report_pedido_adapter"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:visibility="visible"
+                tools:ignore="MissingConstraints"
+                tools:visibility="visible"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_item_ped"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_report_pedido"
-                tools:ignore="DuplicateIds"
-                tools:listitem="@layout/report_pedido_adapter"
-                tools:viewBindingType="androidx.recyclerview.widget.RecyclerView"/>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_report_pedido"
-                android:gravity="end"
-                android:orientation="horizontal">
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:text="Valor Total"/>
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_report_pedido"
-                    android:gravity="end">
-
-                <TextView
-                        android:id="@+id/recebe_valor_pedido"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:layout_marginEnd="5dp"
-                        android:text="99999,999"/>
-
-            </LinearLayout>
-        </LinearLayout>
-
-
     </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
 
-
+    <androidx.appcompat.widget.AppCompatButton android:layout_width="match_parent"
+                                               android:layout_height="wrap_content"
+                                               android:background="@drawable/btn_primary"
+                                               android:id="@+id/btnpdf"
+                                               android:layout_marginTop="10dp"
+                                               android:text="Gerar PDF"/>
 </androidx.appcompat.widget.LinearLayoutCompat>
 

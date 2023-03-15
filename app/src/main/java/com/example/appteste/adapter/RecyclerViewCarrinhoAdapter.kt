@@ -1,5 +1,6 @@
 package com.example.appteste.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -18,9 +19,10 @@ class RecyclerViewCarrinhoAdapter(val context: Context, val itens:List<ItensPedi
         return holder;
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CarrinhoViewHolder, position: Int) {
         holder.produto.text = itens.get(position).prodesc
-        holder.qtd.text = "QTD: ${itens.get(position).quantidade.toString()}"
+        holder.qtd.text = "QTD: ${itens.get(position).quantidade}"
         holder.unidade.text = "${itens.get(position).unpunidade}/${itens.get(position).unpquant}"
         holder.preco.text = "Preço: R$${itens.get(position).precovenda}"
         holder.total.text = "Total: R$ ${itens.get(position).quantidade * itens.get(position).precovenda}"
@@ -36,12 +38,7 @@ class RecyclerViewCarrinhoAdapter(val context: Context, val itens:List<ItensPedi
 
             notifyDataSetChanged()
         })
-
-
-
     }
-
-
 
     interface ClickBtns {
 

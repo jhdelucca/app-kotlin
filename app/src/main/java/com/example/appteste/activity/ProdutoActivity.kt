@@ -104,7 +104,7 @@ class ProdutoActivity() : AppCompatActivity() {
                     binding.editValorCar.setText(listaPesquisaProduto.get(position).precoVenda.toString())
                 }
 
-                binding.txtDescricao.text = "${listaPesquisaProduto.get(position).proDesc}"
+                binding.txtDescricao.text = listaPesquisaProduto.get(position).proDesc
                 CODIGO_PRODUTO = listaPesquisaProduto.get(position).codigo
                 precoTabela = listaPesquisaProduto.get(position).precoVenda
                 listarUnidadePro(listaPesquisaProduto.get(position).codigo)

@@ -18,6 +18,7 @@ import com.example.appteste.database.PedidoUnico
 import com.example.appteste.databinding.ActivityCarrinhoBinding
 import com.example.appteste.extensions.*
 import com.example.appteste.model.*
+import com.example.appteste.util.preferences.SharedPreferences
 import com.example.appteste.request.AlteraPedidoBody
 import com.example.appteste.request.ItensBody
 import com.example.appteste.request.UnidadeProRequest
@@ -63,6 +64,10 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
 
         binding.idListaCarrinho.layoutManager = LinearLayoutManager(this)
         binding.idListaCarrinho.setHasFixedSize(true)
+
+                getPedido()
+                somaValor()
+                findByItens()
 
 
         binding.btnSalvar.setOnClickListener {
@@ -112,13 +117,6 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        getPedido()
-        somaValor()
-        findByItens()
-        listaSpinners()
-    }
     private fun getPedido() {
         GlobalScope.launch(Dispatchers.IO) {
             val pedido = appDataBase.pedidoDao().findPedido()
@@ -130,23 +128,25 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
     private suspend  fun verificaAlteracao(pedido: PedidoUnico) {
         withContext(Dispatchers.Main) {
             pedidoUnico = if(pedido == null) PedidoUnico(0) else pedido
+            listaSpinners(pedidoUnico)
         }
     }
 
-    private fun listaSpinners() {
-        getNatureza()
-        getForma()
-        getCondicao()
+    private fun listaSpinners(pedido: PedidoUnico) {
+        getNatureza(pedido)
+        getForma(pedido)
+        getCondicao(pedido)
         val listaVend = listOf<String>("Joao" , "Felipe" , "Sammy")
         binding.spinVendedor.adapter = ArrayAdapter(applicationContext, R.layout.support_simple_spinner_dropdown_item,listaVend)
         binding.spinVendedor.setSelection(0)
     }
 
-    private fun getNatureza() {
+    private fun getNatureza(pedido: PedidoUnico) {
         val retrofitCliente = NetworkUtils.getRetrofitInstance(URL_PRINCIPAL)
         val endpoint = retrofitCliente.create(Endpoint::class.java)
+     //   val teste = pedidoUnico
 
-        val callback = endpoint.getNatureza(pedidoUnico.natCodigo , FILIAL)
+        val callback = endpoint.getNatureza(pedido.natCodigo , FILIAL)
 
         callback.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
@@ -155,9 +155,10 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
                 if (data == null) {
                     data = response.errorBody()?.string()
                 }
-                val json = JSONArray(data!!)
+
 
                 if(response.isSuccessful) {
+                    val json = JSONArray(data!!)
                     listaNat  = GsonBuilder().create().fromJson(json.toString(), Array<NatOper>::class.java).toList()
                     if(listaNat.isNotEmpty()) {
                       binding.spinNat.adapter = ArrayAdapter(applicationContext, R.layout.support_simple_spinner_dropdown_item , listaNat)
@@ -179,10 +180,10 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
 
     }
 
-   private fun getForma() {
+   private fun getForma(pedido: PedidoUnico) {
         val retrofitCliente = NetworkUtils.getRetrofitInstance(URL_PRINCIPAL)
         val endpoint = retrofitCliente.create(Endpoint::class.java)
-        val callback = endpoint.getForma(CODIGO_CLIENTE,pedidoUnico.fpgCodigo)
+        val callback = endpoint.getForma(CODIGO_CLIENTE,pedido.fpgCodigo)
 
         callback.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
@@ -191,9 +192,9 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
                 if (data == null) {
                     data = response.errorBody()?.string()
                 }
-                val json = JSONArray(data!!)
 
                 if(response.isSuccessful) {
+                    val json = JSONArray(data!!)
                     listaForma  = GsonBuilder().create().fromJson(json.toString(), Array<FormaPagto>::class.java).toList()
                     if(listaForma.isNotEmpty()) {
                         binding.spinForma.adapter = ArrayAdapter(applicationContext, R.layout.support_simple_spinner_dropdown_item , listaForma)
@@ -213,21 +214,23 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
 
     }
 
-  private fun getCondicao() {
+  private fun getCondicao(pedido: PedidoUnico) {
         val retrofitCliente = NetworkUtils.getRetrofitInstance(URL_PRINCIPAL)
         val endpoint = retrofitCliente.create(Endpoint::class.java)
-        val callback = endpoint.getCondicao(CODIGO_CLIENTE,pedidoUnico.cpgCodigo)
+        val callback = endpoint.getCondicao(CODIGO_CLIENTE,pedido.cpgCodigo)
 
         callback.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                var data = response.body()?.string()
+;                var data = response.body()?.string()
 
                 if (data == null) {
                     data = response.errorBody()?.string()
+
                 }
-                val json = JSONArray(data!!)
+
 
                 if(response.isSuccessful) {
+                    val json = JSONArray(data!!)
                     listaCond  = GsonBuilder().create().fromJson(json.toString(), Array<CondPagto>::class.java).toList()
                     if(listaCond.isNotEmpty()) {
                         binding.spinCondicao.adapter = ArrayAdapter(applicationContext, R.layout.support_simple_spinner_dropdown_item , listaCond)
@@ -252,6 +255,7 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
         GlobalScope.launch(Dispatchers.IO) {
             val recebeLista = appDataBase.itenspedidoDao().findByAll()
             preencheLista(recebeLista)
+          //  listaItens.set(0,recebeLista.get(0))
         }
     }
 
@@ -282,8 +286,7 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
 
    private  fun inserepedidos() {
 
-
-        val retrofitClient = NetworkUtils.getRetrofitInstance("http://192.168.0.13:2020/vendasguardian/")
+        val retrofitClient = NetworkUtils.getRetrofitInstance("http://192.168.0.13:8080/vendasguardian/")
 
         val endpoint = retrofitClient.create(Endpoint::class.java)
         //val natureza = binding.spinNat.selectedItem.toString().split("-")
@@ -291,11 +294,13 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
         val forma = binding.spinForma.adapter.getItem(binding.spinForma.selectedItemPosition) as FormaPagto
         val condicao = binding.spinCondicao.adapter.getItem(binding.spinCondicao.selectedItemPosition) as CondPagto
         val itensBody = percorreListaItens()
-        val authorization = "SPACE $TOKEN"
+        //val authorization = "SPACE $TOKEN"
+        val authorization = "SPACE ${SharedPreferences(applicationContext).getString("token")}"
 
        val callback = if(STATUS != "A") {
            val insereBody = InserePedidoBody(transformaHora(),CODIGO_CLIENTE,valorTotal,transformaData(),transformaHora(),itensBody,
                forma.formaCodigo, condicao.condicaoCodigo, natureza.natCodigo)
+           val teste = Gson().toJson(insereBody)
            val body: RequestBody = Gson().toJson(insereBody).toRequestBody("application/json;charset=utf-8".toMediaType())
            for(item:ItensPedido in listaItens) {
                if (item.precovenda < item.precotab) {
@@ -402,6 +407,7 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
         listarUnidadePro(proCodigo , itensPedido.unpunidade , itensPedido.unpquant)
         binding.editQuantidadeCar.setText(itensPedido.quantidade.toString())
         binding.editValorCar.setText((itensPedido.precovenda).toString())
+
 
     }
 

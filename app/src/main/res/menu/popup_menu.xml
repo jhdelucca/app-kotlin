@@ -4,7 +4,7 @@
     android:title="Alterar Pedido"
     android:visible="true"/>
     <item
-    android:id="@+id/cancelar_pedido"
-    android:title="Cancelar Pedido"
+    android:id="@+id/visualizar_pedido"
+    android:title="Visualizar Pedido"
     android:visible="true"/>
 </menu>

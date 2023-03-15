@@ -135,6 +135,13 @@ class PedidosActivity : AppCompatActivity() {
                         }
                         true
                     }
+                    R.id.visualizar_pedido -> {
+                        val params = Bundle()
+                        params.putInt("numero" , listaPedidos[position].numero)
+                        params.putString("serie" , listaPedidos[position].serie)
+                        startActivity(Intent(this,ReportPedidoActivity::class.java).putExtras(params))
+                        true
+                    }
                     else -> false
                 }
             }

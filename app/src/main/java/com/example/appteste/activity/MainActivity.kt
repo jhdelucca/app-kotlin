@@ -14,6 +14,7 @@ import com.example.appteste.database.AppDataBase
 import com.example.appteste.extensions.*
 import com.example.appteste.model.Filial
 import com.example.appteste.model.User
+import com.example.appteste.util.preferences.SharedPreferences
 import com.example.appteste.request.UserRequest
 import com.example.appteste.util.NetworkUtils
 import com.google.gson.Gson
@@ -124,9 +125,9 @@ class MainActivity : AppCompatActivity() {
                if (data == null) {
                    data = response.errorBody()?.string()
                }
-               val json = JSONArray(data!!)
 
                if(response.isSuccessful) {
+                   val json = JSONArray(data!!)
                    listaFilial = GsonBuilder().create().fromJson(json.toString(), Array<Filial>::class.java).toList()
                    if(listaFilial.isNotEmpty()) {
                        spinner.adapter = ArrayAdapter(applicationContext, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item , listaFilial)
@@ -135,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                       Toast.makeText(baseContext, "Verifique Usuario", Toast.LENGTH_LONG).show()
                    }
                }else{
-                   Toast.makeText(baseContext, "${JSONObject(data!!).getString("message")}", Toast.LENGTH_LONG).show()
+                   Toast.makeText(baseContext, JSONObject(data!!).getString("message"), Toast.LENGTH_LONG).show()
                }
            }
 
@@ -164,7 +165,7 @@ class MainActivity : AppCompatActivity() {
                 if(response.isSuccessful) {
                    DADOS_USUARIO = json.getJSONObject("dados")
                    Login()
-                }else{Toast.makeText(baseContext, "${json.getString("message")}", Toast.LENGTH_LONG).show()
+                }else{Toast.makeText(baseContext, json.getString("message"), Toast.LENGTH_LONG).show()
 
                 }
             }
@@ -176,7 +177,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun Login() {
-        val retrofitClient = NetworkUtils.getRetrofitInstance("http://192.168.0.13:2020/vendasguardian/")
+        val retrofitClient = NetworkUtils.getRetrofitInstance("http://192.168.0.13:8080/vendasguardian/")
         val endpoint = retrofitClient.create(Endpoint::class.java)
 
         val filial = spinner.adapter.getItem(spinner.selectedItemPosition) as Filial
@@ -198,6 +199,7 @@ class MainActivity : AppCompatActivity() {
                     val it = Intent(applicationContext, TesteActivity::class.java)
                     val userReq = UserRequest(json.getString("token") , json.getString("usuarioNome"), json.getString("login"), json.getInt("filialCodigo"))
                     TOKEN = userReq.token
+                    SharedPreferences(applicationContext).storeString("token" , userReq.token)
                     NOME_USUARIO = userReq.usuarioNome
                     FILIAL = filial.codigo
                     it.putExtra("user", userReq) // Tipo Parcelable
@@ -206,6 +208,7 @@ class MainActivity : AppCompatActivity() {
                     campo.requestFocus()
                     getParametros()
                     startActivity(it)
+                    finish()
                 }else{
                     Toast.makeText(baseContext, "${json.getString("mensagemUsuario")}", Toast.LENGTH_LONG).show()
                 }
@@ -262,7 +265,7 @@ class MainActivity : AppCompatActivity() {
     true
     }
     R.id.menuHelp -> {
-
+        startActivity(Intent(applicationContext,CanhotoActivity::class.java))
     true
     }
     else -> super.onOptionsItemSelected(item)

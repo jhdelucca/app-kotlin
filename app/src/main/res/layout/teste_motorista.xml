@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carga 1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="12dp"
+        tools:ignore="MissingConstraints"
+        android:id="@+id/txtCarga"
+    />
+
+    <View android:layout_width="0dp"
+          android:layout_height="108dp"
+          android:background="@drawable/borda"
+          android:layout_margin="12dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/txtCarga"
+          android:id="@+id/retangulo"
+          tools:ignore="MissingConstraints"
+    />
+
+    <View
+        android:id="@+id/bola"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/balls"
+        app:layout_constraintStart_toStartOf="@id/retangulo"
+        app:layout_constraintTop_toTopOf="@id/retangulo"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="10"
+              android:id="@+id/txtNumPed"
+              android:textSize="16sp"
+              android:textStyle="bold"
+              android:textColor="@color/black"
+              app:layout_constraintStart_toStartOf="@id/bola"
+              app:layout_constraintEnd_toEndOf="@id/bola"
+              app:layout_constraintTop_toTopOf="@id/bola"
+              app:layout_constraintBottom_toBottomOf="@id/bola"
+              tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/txtValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="Valor"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/bola"
+        app:layout_constraintTop_toTopOf="@id/bola" tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/editValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="4dp"
+        android:text="100,00R$"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/bola"
+        app:layout_constraintTop_toBottomOf="@id/txtValor" tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/txtVolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="Volume"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/editValor"
+        app:layout_constraintTop_toTopOf="@id/bola" tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/editVolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="200"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/txtVolume"
+        app:layout_constraintTop_toBottomOf="@id/txtVolume" tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/txtForma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="F.Pagto"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/txtVolume"
+        app:layout_constraintTop_toTopOf="@id/txtVolume" tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/editForma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="DH"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/txtForma"
+        app:layout_constraintTop_toBottomOf="@id/txtForma" tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/txtNF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="NF"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/txtForma"
+        app:layout_constraintTop_toTopOf="@id/txtForma" tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/editNF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="1-1258"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/txtNF"
+        app:layout_constraintTop_toBottomOf="@id/txtNF" tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/txtEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="4dp"
+        android:text="Al Patativas, 246 - Cabral, Contagem - MG"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/retangulo"
+        app:layout_constraintStart_toStartOf="@id/retangulo"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/txtCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="Grupo Space Informatica"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/txtEnd"
+        app:layout_constraintStart_toStartOf="@id/retangulo"
+        tools:ignore="MissingConstraints"/>
+
+    <CheckBox
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        android:id="@+id/checkbox"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintBottom_toBottomOf="@id/imgCheck"
+        app:layout_constraintEnd_toStartOf="@id/imgCheck"
+        app:layout_constraintTop_toTopOf="@id/imgCheck"
+        tools:ignore="MissingConstraints"/>
+
+
+    <ImageView
+        android:id="@+id/imgCheck"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_check"
+        tools:ignore="MissingConstraints"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="@id/retangulo"
+        app:layout_constraintTop_toTopOf="@id/retangulo" />
+
+    <CheckBox
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        android:id="@+id/checkboxCancel"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintBottom_toBottomOf="@id/imgCancel"
+        app:layout_constraintEnd_toStartOf="@id/imgCancel"
+        app:layout_constraintTop_toTopOf="@id/imgCancel"
+        tools:ignore="MissingConstraints"/>
+
+
+    <ImageView
+        android:id="@+id/imgCancel"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_cancel"
+        tools:ignore="MissingConstraints"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="@id/retangulo"
+        app:layout_constraintBottom_toBottomOf="@id/retangulo"/>
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

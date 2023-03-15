@@ -63,11 +63,14 @@ interface Endpoint {
     fun getUnidadePro(@Body body:RequestBody):Call<ResponseBody>
 
     @GET("natoper")
-    fun getNatureza(@Query("natureza") natureza:String = "" , @Query("filial") filial: Int) : Call<ResponseBody>
+    fun getNatureza(@Query("natureza") natureza:String, @Query("filial") filial: Int) : Call<ResponseBody>
 
     @GET("formapagto")
-    fun getForma(@Query("codigocliente") codigocliente:Int , @Query("formapagto") formapagto:String = "") : Call<ResponseBody>
+    fun getForma(@Query("codigocliente") codigocliente:Int , @Query("formapagto") formapagto:String) : Call<ResponseBody>
 
     @GET("condpagto")
-    fun getCondicao(@Query("codigocliente") codigocliente:Int , @Query("condpagto") condpagto:Int = 0) : Call<ResponseBody>
+    fun getCondicao(@Query("codigocliente") codigocliente:Int , @Query("condpagto") condpagto:Int) : Call<ResponseBody>
+
+    @POST("bairro/imagem")
+    fun postImagem(@Body body:RequestBody):Call<ResponseBody>
 }

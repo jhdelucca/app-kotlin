@@ -41,17 +41,22 @@ class AutorizacaoActivity : AppCompatActivity() {
         appDataBase = AppDataBase.getDatabase(this)
 
         findItensAutorizar()
-
-        if(STATUS == "A") {
-            alteraBody = intent.extras?.getParcelable<AlteraPedidoBody>("body")!!
-        }else{
-            insereBody = intent.extras?.getParcelable<InserePedidoBody>("body")!!
-        }
+        verifiicaStatus()
 
         binding.btnAutorizar.setOnClickListener {
             getColaborador()
         }
 
+    }
+
+    private fun verifiicaStatus() {
+        runOnUiThread {
+            if (STATUS == "A") {
+                alteraBody = intent.extras?.getParcelable<AlteraPedidoBody>("body")!!
+            } else {
+                insereBody = intent.extras?.getParcelable<InserePedidoBody>("body")!!
+            }
+        }
     }
 
     @OptIn(DelicateCoroutinesApi::class)
@@ -102,7 +107,7 @@ class AutorizacaoActivity : AppCompatActivity() {
     }
 
     fun Login() {
-        val retrofitClient = NetworkUtils.getRetrofitInstance("http://192.168.0.13:2020/vendasguardian/")
+        val retrofitClient = NetworkUtils.getRetrofitInstance("http://192.168.0.13:8080/vendasguardian/")
         val endpoint = retrofitClient.create(Endpoint::class.java)
 
 
@@ -134,7 +139,7 @@ class AutorizacaoActivity : AppCompatActivity() {
     }
 
     private  fun inserepedidos() {
-        val retrofitClient = NetworkUtils.getRetrofitInstance("http://192.168.0.13:2020/vendasguardian/")
+        val retrofitClient = NetworkUtils.getRetrofitInstance("http://192.168.0.13:8080/vendasguardian/")
 
         val endpoint = retrofitClient.create(Endpoint::class.java)
         val authorization = "SPACE $TOKEN"

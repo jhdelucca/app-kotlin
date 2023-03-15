@@ -28,6 +28,7 @@ class ConfigActivity : AppCompatActivity() {
         binding.buttonLogin.setOnClickListener {
             delete()
             insertDaoConfig()
+            finish()
         }
     }
 

@@ -20,4 +20,16 @@ data class PedidoUnico(
     @ColumnInfo(name = "formapagto")
     val fpgCodigo:String="" ,
     @ColumnInfo(name = "condpagto")
-    val cpgCodigo:Int = 0) { }
+    val cpgCodigo:Int = 0,
+    @ColumnInfo(name="cliente")
+    val razao:String = "",
+    @ColumnInfo(name="obs")
+    val pedObs:String = "",
+    @ColumnInfo(name = "formadesc")
+    val fpgDesc:String =  "",
+    @ColumnInfo(name="conddesc")
+    val cpgDesc:String = "",
+    @ColumnInfo(name="dtEmissao")
+    val dtEmissao:String = "",
+    @ColumnInfo(name="vendedor")
+    val colaboradorRazao:String = "") { }

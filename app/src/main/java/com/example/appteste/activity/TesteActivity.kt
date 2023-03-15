@@ -67,7 +67,7 @@ class TesteActivity : AppCompatActivity() {
         // val user = intent.extras?.getParcelable<UserRequest>("user")
         //if (user != null) {
         //  text.text = user.login
-        text.setText("Bem Vindo: ${NOME_USUARIO}")
+        text.setText("Bem Vindo: $NOME_USUARIO")
         //text.text = "Bem Vindo: ${DADOS_USUARIO.getString("razao")}"
         //}
 
@@ -224,9 +224,9 @@ class TesteActivity : AppCompatActivity() {
                     data = response.errorBody()?.string()
                 }
                 //val json = JSONArray(data!!)
-                val dados = JSONObject(data!!).getJSONArray("dados")
 
                 if (response.isSuccessful) {
+                    val dados = JSONObject(data!!).getJSONArray("dados")
                     listaCliente =
                         GsonBuilder().create().fromJson(dados.toString(), Array<Cliente>::class.java).toList()
                     listView.adapter = ListaAdapter(applicationContext, listaCliente)
