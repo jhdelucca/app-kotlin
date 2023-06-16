@@ -63,7 +63,9 @@ class MainActivity : AppCompatActivity() {
         campo.requestFocus()
 
         campo.setOnFocusChangeListener { v, hasFocus ->
-            getFiliais()
+            if(URL_PRINCIPAL.isNotEmpty()) {
+                getFiliais()
+            }
         }
 
        /** campo.addTextChangedListener(object : TextWatcher {
@@ -98,7 +100,11 @@ class MainActivity : AppCompatActivity() {
         })**/
 
         btn2.setOnClickListener {
-            getColaborador()
+            if(URL_PRINCIPAL.isNotEmpty()) {
+                getColaborador()
+            }else{
+                Toast.makeText(applicationContext, "Preencha as configurações" , Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -141,7 +147,7 @@ class MainActivity : AppCompatActivity() {
            }
 
            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-               Toast.makeText(baseContext, "Erro de Serviço!!", Toast.LENGTH_LONG).show()
+               Toast.makeText(baseContext, "Erro de Serviço, verifique os dados de conexão", Toast.LENGTH_LONG).show()
            }
        })
 

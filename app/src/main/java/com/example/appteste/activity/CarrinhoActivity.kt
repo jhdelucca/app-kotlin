@@ -149,6 +149,7 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
         val callback = endpoint.getNatureza(pedido.natCodigo , FILIAL)
 
         callback.enqueue(object : Callback<ResponseBody> {
+            @SuppressLint("SuspiciousIndentation")
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 var data = response.body()?.string()
 

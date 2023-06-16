@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.example.appteste.R
 import com.example.appteste.extensions.PARAMETRO_PRECO
 import com.example.appteste.model.Produtos
 
 class ListViewProdutoAdapter(val context: Context, val produtos: List<Produtos>): BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
 
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         var view = inflater.inflate(R.layout.adapter_lista, null)
@@ -36,6 +37,7 @@ class ListViewProdutoAdapter(val context: Context, val produtos: List<Produtos>)
             preco.setVisibility(View.VISIBLE)
             preco.text = "Preço: R$ ${produtos.get(position).precoVenda}"
         }
+
         return view;
     }
 

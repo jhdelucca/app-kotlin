@@ -1,5 +1,6 @@
 package com.example.appteste.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,10 +24,7 @@ import com.example.appteste.util.NetworkUtils
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_produto.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -38,6 +36,7 @@ import retrofit2.Response
 import java.text.NumberFormat
 import java.util.Locale
 
+@OptIn(DelicateCoroutinesApi::class)
 class ProdutoActivity() : AppCompatActivity() {
 
     lateinit var binding: ActivityProdutoBinding
@@ -116,7 +115,7 @@ class ProdutoActivity() : AppCompatActivity() {
                     binding.editValorCar.setText(listaProdutos.get(position).precoVenda.toString())
                 }
 
-                binding.txtDescricao.text = "${listaProdutos.get(position).proDesc}"
+                binding.txtDescricao.text = listaProdutos.get(position).proDesc
                 CODIGO_PRODUTO = listaProdutos.get(position).codigo
                 precoTabela = listaProdutos.get(position).precoVenda
                 listarUnidadePro(listaProdutos.get(position).codigo)
@@ -134,9 +133,9 @@ class ProdutoActivity() : AppCompatActivity() {
             }
         }
 
-        binding.btnCancelar.setOnClickListener {
-            limparCampos()
-        }
+        //binding.btnCancelar.setOnClickListener {
+           // limparCampos()
+        //}
 
         binding.btnCarrinho.setOnClickListener {
             startActivity(Intent(this, CarrinhoActivity::class.java))
@@ -193,7 +192,7 @@ class ProdutoActivity() : AppCompatActivity() {
         val unidade = binding.spinUnidadeCar.selectedItem.toString().split("/").get(0)
         val qtdUnidade = binding.spinUnidadeCar.selectedItem.toString().split("/").get(1).toInt()
         val quantidade = binding.editQuantidadeCar.text.toString().toDouble()
-        var preco = binding.editValorCar.text.toString().toDouble()
+        val preco = binding.editValorCar.text.toString().toDouble()
 
         val itensPedido = ItensPedido(procodigo = CODIGO_PRODUTO, prodesc = proDesc, unpunidade = unidade, unpquant = qtdUnidade,
         quantidade = quantidade, precovenda = preco , precotab = precoTabela , cliente = CODIGO_CLIENTE)
@@ -231,16 +230,17 @@ class ProdutoActivity() : AppCompatActivity() {
              //   val json = JSONArray(JSONObject(data!!).getJSONArray("dados"))
 
                 if (response.isSuccessful) {
-                    if(JSONObject(data!!).getBoolean("resposta")) {
-                        listaProdutos =  GsonBuilder().create().fromJson(JSONObject(data!!).getJSONArray("dados").toString(), Array<Produtos>::class.java).toList()
+                    if(JSONObject(data).getBoolean("resposta")) {
+                        listaProdutos =  GsonBuilder().create().fromJson(JSONObject(data).getJSONArray("dados").toString(), Array<Produtos>::class.java).toList()
                         binding.idListaProdutos.adapter = ListViewProdutoAdapter(applicationContext, listaProdutos)
                     }else{
-                        Toast.makeText(baseContext, "${JSONObject(data!!).getString("mensagemUsuario")}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(baseContext,
+                            JSONObject(data).getString("mensagemUsuario"), Toast.LENGTH_LONG).show()
                         listaProdutos = listOf()
                         binding.idListaProdutos.adapter = ListViewProdutoAdapter(applicationContext, listaProdutos)
                     }
                 } else {
-                    Toast.makeText(baseContext, "${JSONObject(data!!).getString("message")}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(baseContext, JSONObject(data!!).getString("message"), Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -274,12 +274,13 @@ class ProdutoActivity() : AppCompatActivity() {
                         binding.spinUnidadeCar.adapter = ArrayAdapter(applicationContext, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item , listUnidadePro)
                        // binding.spinUnidade.setSelection(0)
                     }else{
-                        Toast.makeText(baseContext, "${JSONObject(data!!).getString("mensagemUsuario")}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(baseContext,
+                            JSONObject(data).getString("mensagemUsuario"), Toast.LENGTH_LONG).show()
                         listUnidadePro = listOf()
                         binding.spinUnidadeCar.adapter = ArrayAdapter(applicationContext, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item , listUnidadePro)
                     }
                 } else {
-                    Toast.makeText(baseContext, "${JSONObject(data!!).getString("message")}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(baseContext, JSONObject(data!!).getString("message"), Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -289,6 +290,7 @@ class ProdutoActivity() : AppCompatActivity() {
         })
     }
 
+    @SuppressLint("SetTextI18n")
     private fun delete() {
         GlobalScope.launch(Dispatchers.IO) {
             appDataBase.itenspedidoDao().delete()
