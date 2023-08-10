@@ -1,3 +1,5 @@
+@file:OptIn(DelicateCoroutinesApi::class)
+
 package com.example.appteste.activity
 
 import androidx.appcompat.app.AppCompatActivity
@@ -7,10 +9,7 @@ import com.example.appteste.database.AppDataBase
 import com.example.appteste.database.Configuracao
 import com.example.appteste.databinding.ActivityConfigBinding
 import com.example.appteste.extensions.URL_PRINCIPAL
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class ConfigActivity : AppCompatActivity() {
     private lateinit var binding: ActivityConfigBinding

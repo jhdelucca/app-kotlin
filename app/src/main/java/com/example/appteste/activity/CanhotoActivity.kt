@@ -101,7 +101,7 @@ class CanhotoActivity : AppCompatActivity() {
         val file = File(
             Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES
-            ), albumName
+            ), albumName.toString()
         )
         if (!file.mkdirs()) {
             Log.e("SignaturePad", "Direitorio não criado")

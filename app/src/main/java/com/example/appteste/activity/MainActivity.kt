@@ -1,3 +1,5 @@
+@file:OptIn(DelicateCoroutinesApi::class)
+
 package com.example.appteste.activity
 
 import android.content.Intent
@@ -20,6 +22,7 @@ import com.example.appteste.util.NetworkUtils
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -36,9 +39,9 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var btn2: Button;
-    lateinit var campo: EditText;
-    lateinit var senha:EditText;
+    lateinit var btn2: Button
+    lateinit var campo: EditText
+    lateinit var senha:EditText
     lateinit var spinner: Spinner
     var listaFilial: List<Filial> = listOf()
     private lateinit var appDataBase: AppDataBase
@@ -50,8 +53,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btn2 = findViewById(R.id.buttonLoga2)
-        campo = findViewById(R.id.editTextUsr);
-        senha = findViewById(R.id.editTextSenha);
+        campo = findViewById(R.id.editTextUsr)
+        senha = findViewById(R.id.editTextSenha)
         spinner = findViewById(R.id.spiFilial)
         appDataBase = AppDataBase.getDatabase(this)
 
@@ -153,8 +156,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun getColaborador() {
-        val retrofitCliente = NetworkUtils.getRetrofitInstance(URL_PRINCIPAL);
+    private fun getColaborador() {
+        val retrofitCliente = NetworkUtils.getRetrofitInstance(URL_PRINCIPAL)
         val endpoint = retrofitCliente.create(Endpoint::class.java)
         val usuario = campo.text.toString()
         val callback = endpoint.getColaborador(usuario)
@@ -216,7 +219,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(it)
                     finish()
                 }else{
-                    Toast.makeText(baseContext, "${json.getString("mensagemUsuario")}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(baseContext, json.getString("mensagemUsuario"), Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -227,7 +230,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getParametros() {
-        val retrofitClient = NetworkUtils.getRetrofitInstance(URL_PRINCIPAL);
+        val retrofitClient = NetworkUtils.getRetrofitInstance(URL_PRINCIPAL)
         val endpoint = retrofitClient.create(Endpoint::class.java)
         val callback = endpoint.getParametros(FILIAL)
 
@@ -247,7 +250,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(baseContext,"Parametors Não Selecionados" , Toast.LENGTH_SHORT )
+                Toast.makeText(baseContext,"Parametors Não Selecionados" , Toast.LENGTH_SHORT ).show()
             }
 
         })
@@ -268,7 +271,6 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, ConfigActivity::class.java)
         startActivity(intent)
         true
-    true
     }
     R.id.menuHelp -> {
         startActivity(Intent(applicationContext,CanhotoActivity::class.java))

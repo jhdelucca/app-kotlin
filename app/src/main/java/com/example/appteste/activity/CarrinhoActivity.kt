@@ -168,7 +168,7 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
                         Toast.makeText(baseContext, "Natureza nao encontrada", Toast.LENGTH_LONG).show()
                     }
                 }else{
-                    Toast.makeText(baseContext, JSONObject(data).getString("message"), Toast.LENGTH_LONG).show()
+                    Toast.makeText(baseContext, JSONObject(data!!).getString("message"), Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -204,7 +204,7 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
                         Toast.makeText(baseContext, "Natureza nao encontrada", Toast.LENGTH_LONG).show()
                     }
                 }else{
-                    Toast.makeText(baseContext, JSONObject(data).getString("message"), Toast.LENGTH_LONG).show()
+                    Toast.makeText(baseContext, JSONObject(data!!).getString("message"), Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -222,7 +222,7 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
 
         callback.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-;                var data = response.body()?.string()
+                var data = response.body()?.string()
 
                 if (data == null) {
                     data = response.errorBody()?.string()
@@ -240,7 +240,7 @@ class CarrinhoActivity : AppCompatActivity() , RecyclerViewCarrinhoAdapter.Click
                         Toast.makeText(baseContext, "Natureza nao encontrada", Toast.LENGTH_LONG).show()
                     }
                 }else{
-                    Toast.makeText(baseContext, JSONObject(data).getString("message"), Toast.LENGTH_LONG).show()
+                    Toast.makeText(baseContext, JSONObject(data!!).getString("message"), Toast.LENGTH_LONG).show()
                 }
             }
 

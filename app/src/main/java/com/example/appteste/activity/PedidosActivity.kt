@@ -26,10 +26,7 @@ import com.example.appteste.util.NetworkUtils
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_pedidos.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -41,6 +38,7 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
+@OptIn(DelicateCoroutinesApi::class)
 class PedidosActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPedidosBinding
@@ -90,7 +88,7 @@ class PedidosActivity : AppCompatActivity() {
                             Locale.getDefault()
                         ).format(calendar.time)
                     )
-                    binding.editTextDate.setFocusable(false)
+                    binding.editTextDate.isFocusable = false
                     val dataInicial = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
                     val dataFinal = binding.editTextDate2.text.split(("/"))
                     listarPedidos(dataInicial, "${dataFinal.get(2)}-${dataFinal.get(1)}-${dataFinal.get(0)}")
@@ -113,7 +111,7 @@ class PedidosActivity : AppCompatActivity() {
                             Locale.getDefault()
                         ).format(calendar.time)
                     )
-                    binding.editTextDate2.setFocusable(false)
+                    binding.editTextDate2.isFocusable = false
                     val dataFinal = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
                     val dataInicial = binding.editTextDate.text.split(("/"))
                     listarPedidos("${dataInicial.get(2)}-${dataInicial.get(1)}-${dataInicial.get(0)}", dataFinal)
@@ -228,7 +226,7 @@ class PedidosActivity : AppCompatActivity() {
         val retrofitClient = NetworkUtils.getRetrofitInstance(URL_PRINCIPAL)
         val endpoint = retrofitClient.create(Endpoint::class.java)
         val pedidos = if(DADOS_USUARIO.getInt("supVenda") == 1 || DADOS_USUARIO.getInt("genVenda") == 1) {
-            PedidosRequest(FILIAL, dataInicial, dataFinal);
+            PedidosRequest(FILIAL, dataInicial, dataFinal)
         }else{
             PedidosRequest(FILIAL, dataInicial, dataFinal, DADOS_USUARIO.getInt("codigo"))
         }

@@ -36,7 +36,7 @@ class BairroActivity : AppCompatActivity() {
         val bairro = intent.extras?.getParcelable<Bairro>("bairro")
         if (bairro != null) {
             binding.idCodigoBairro.text = "${bairro.codigo}"
-            binding.idDescricaoBairro.text = "${bairro.descricao}"
+            binding.idDescricaoBairro.text = bairro.descricao
         }
 
         binding.btnPost.setOnClickListener {
@@ -66,7 +66,7 @@ class BairroActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, "Bairro ${bairro.descricao} cadastrado", Toast.LENGTH_LONG).show()
 
                 }else{
-                    Toast.makeText(baseContext, "${json.getString("error")}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(baseContext, json.getString("error"), Toast.LENGTH_LONG).show()
                 }
             }
 

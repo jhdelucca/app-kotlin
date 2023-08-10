@@ -222,7 +222,7 @@ class ProdutoActivity() : AppCompatActivity() {
 
         callback.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                var data = response.body()?.string()
+                var data= response.body()?.string()
 
                 if (data == null) {
                     data = response.errorBody()?.string()
@@ -230,7 +230,7 @@ class ProdutoActivity() : AppCompatActivity() {
              //   val json = JSONArray(JSONObject(data!!).getJSONArray("dados"))
 
                 if (response.isSuccessful) {
-                    if(JSONObject(data).getBoolean("resposta")) {
+                    if(JSONObject(data!!).getBoolean("resposta")) {
                         listaProdutos =  GsonBuilder().create().fromJson(JSONObject(data).getJSONArray("dados").toString(), Array<Produtos>::class.java).toList()
                         binding.idListaProdutos.adapter = ListViewProdutoAdapter(applicationContext, listaProdutos)
                     }else{
@@ -270,7 +270,7 @@ class ProdutoActivity() : AppCompatActivity() {
 
                 if (response.isSuccessful) {
                     if(JSONObject(data!!).getBoolean("resposta")) {
-                        listUnidadePro =  GsonBuilder().create().fromJson(JSONObject(data!!).getJSONArray("dados").toString(), Array<UnidadePro>::class.java).toList()
+                        listUnidadePro =  GsonBuilder().create().fromJson(JSONObject(data).getJSONArray("dados").toString(), Array<UnidadePro>::class.java).toList()
                         binding.spinUnidadeCar.adapter = ArrayAdapter(applicationContext, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item , listUnidadePro)
                        // binding.spinUnidade.setSelection(0)
                     }else{

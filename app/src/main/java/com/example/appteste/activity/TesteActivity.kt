@@ -50,7 +50,7 @@ class TesteActivity : AppCompatActivity() {
         setContentView(R.layout.layout_teste)
 
         appDataBase = AppDataBase.getDatabase(this)
-        text = findViewById(R.id.textParams);
+        text = findViewById(R.id.textParams)
         listView = findViewById(R.id.id_listaCli)
 
         val singToolbar: Toolbar = findViewById(R.id.toolBar)
@@ -67,11 +67,11 @@ class TesteActivity : AppCompatActivity() {
         // val user = intent.extras?.getParcelable<UserRequest>("user")
         //if (user != null) {
         //  text.text = user.login
-        text.setText("Bem Vindo: $NOME_USUARIO")
+        text.text = "Bem Vindo: $NOME_USUARIO"
         //text.text = "Bem Vindo: ${DADOS_USUARIO.getString("razao")}"
         //}
 
-        ListarKotlin();
+        ListarKotlin()
         /** btnPesquisar.setOnClickListener {
         if(editCodigo.text.isEmpty()) {
         ListarKotlin()

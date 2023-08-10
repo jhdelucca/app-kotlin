@@ -1,6 +1,7 @@
 package com.example.appteste.activity
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
 import android.content.pm.PackageManager
@@ -131,6 +132,7 @@ class ReportPedidoActivity : AppCompatActivity()/**,ReportAdapter.ClickProduto**
             }
         })
     }
+    @SuppressLint("SetTextI18n")
     private fun populaDados() {
         binding.recebeCliente.text = pedidoUnico.razao
         binding.recebeNumero.text = "${pedidoUnico.serie} - ${pedidoUnico.numero}"
