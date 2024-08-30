@@ -35,6 +35,7 @@ class AutorizacaoActivity : AppCompatActivity() {
     lateinit var appDataBase:AppDataBase
     var Teste = "TESTE BRANCH"
     var teste2 = 22
+    var teste3 = 30
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
