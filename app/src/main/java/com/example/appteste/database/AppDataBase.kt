@@ -16,6 +16,7 @@ abstract class AppDataBase : RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE: AppDataBase? = null
+        private var teste1 = 10
 
         fun getDatabase(context: Context): AppDataBase {
 
