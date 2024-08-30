@@ -43,7 +43,7 @@ class AutorizacaoActivity : AppCompatActivity() {
         findItensAutorizar()
         verifiicaStatus()
 
-        // comentario teste
+        // comentario teste 123
         binding.btnAutorizar.setOnClickListener {
             getColaborador()
         }
